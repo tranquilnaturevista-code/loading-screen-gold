@@ -47,6 +47,10 @@ def gate_failures(text):
         )
     if "\n" in text or "\r" in text:
         failures.append("entry must be a single line")
+    if text != text.strip():
+        failures.append("entry must not start or end with whitespace")
+    if not text.startswith("Tip: "):
+        failures.append("entry must be a loading-screen tip, labelled 'Tip: '")
     return failures
 
 
